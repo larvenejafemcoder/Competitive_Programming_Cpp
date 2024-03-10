@@ -3,14 +3,59 @@
 #include <limits>
 using namespace std;
 
+#ifdef _WIN32
+#define CLEAR_SCREEN "cls"
+#else
+#define CLEAR_SCREEN "clear"
+#endif
+
+bool continueProgram();
+
 void EvenOrOdd(); // Function prototype
-void SumOfNum(); // Function prototype
+void SumOfNum();  // Function prototype
 
 int main()
 {
-    SumOfNum();
-    return 0;
+    string Function = "";
+    do {
+        cout << "What program would you like to enter? :" << endl;
+        cout << "1. EvenOrOdd" << endl;
+        cout << "2. SumOfNum" << endl;
 
+        while (Function == "")
+        {
+            cout << "Please choose a function to continue with" << endl;
+            getline(cin, Function);
+        }
+
+        switch (stoi(Function)) {
+        case 1:
+            EvenOrOdd();
+            break;
+        case 2:
+            SumOfNum();
+            break;
+        default:
+            cout << "Invalid, please enter a number to fit the program" << endl;
+            return 0; // Exit the program
+        }
+
+    } while (continueProgram());
+
+    return 0;
+}
+
+bool continueProgram()
+{
+    char choice;
+    cout << "Would you like to continue the program? (Y/N): ";
+    cin >> choice;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear input buffer
+
+    // Clear screen
+    system(CLEAR_SCREEN);
+
+    return (choice == 'Y' || choice == 'y');
 }
 
 void EvenOrOdd()
@@ -53,24 +98,25 @@ void EvenOrOdd()
     }
 }
 
-void SumOfNum() 
+void SumOfNum()
 {
     int i;
     string n = "";
-    int a = 0;
-    cout << "Nhap n. Tinh tong cac so le tu 1 den n: " << endl;
+    int e = 0;
+    cout << "Enter n. Calculate the sum of numbers from 1 to n: " << endl;
     getline(cin, n);
-    while (n == "") {
+    while (n == "")
+    {
         cout << "Invalid input. Please type a number" << endl;
         getline(cin, n);
     }
     int f = stoi(n);
-    for (i = 1; i <= f; i++) 
+    for (i = 1; i <= f; i++)
     {
-        if (i % 2 == 1) 
+        if (i % 2 == 1)
         {
-            a += i;
+            e += i;
         }
     }
-    cout << "Tong cac so le tu 1 den " << f << " la: " << a << endl;
+    cout << "The sum of numbers from 1 to n " << f << " is: " << e << endl;
 }
