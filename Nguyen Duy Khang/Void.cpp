@@ -13,6 +13,7 @@ bool continueProgram();
 
 void EvenOrOdd(); // Function prototype
 void SumOfNum();  // Function prototype
+void DivisorOfNum();
 
 int main()
 {
@@ -21,6 +22,7 @@ int main()
         cout << "What program would you like to enter? :" << endl;
         cout << "1. EvenOrOdd" << endl;
         cout << "2. SumOfNum" << endl;
+        cout << "3. DivisorOfNum" << endl;
 
         while (Function == "")
         {
@@ -34,6 +36,9 @@ int main()
             break;
         case 2:
             SumOfNum();
+            break;
+        case 3:
+            DivisorOfNum();
             break;
         default:
             cout << "Invalid, please enter a number to fit the program" << endl;
@@ -119,4 +124,16 @@ void SumOfNum()
         }
     }
     cout << "The sum of numbers from 1 to n " << f << " is: " << e << endl;
+}
+
+void DivisorOfNum()
+{
+    int g,h;
+    cout<<"Enter a number to get an divisor of that number"<<endl;
+    cin>>h;
+    for (g=1;g<=h;g++){
+        if(h%g==0){
+            cout<<g<<" ";
+        }
+    }
 }
