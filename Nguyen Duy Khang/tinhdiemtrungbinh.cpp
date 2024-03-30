@@ -5,8 +5,8 @@ int main(){
 
     cout<<"Nhap so tinh diem trung binh"<<endl;
     cin>>a>>b;
-    c=(a+b)2;
+    c=(a+b)/2;
     cout<<"Diem trung binh la "<<c<<endl;
-    return 0;/
+    return 0;
 
 }
