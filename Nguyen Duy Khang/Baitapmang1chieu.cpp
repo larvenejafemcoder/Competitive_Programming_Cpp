@@ -1,124 +1,174 @@
 #include <iostream>
-#include <cstdio>
 #include <vector>
 
 using namespace std;
 
-class Baitap1
+class Baitap1 
 {
 public:
     int n = 10;
     vector<int> a = {1, 2, 3, -4, -5, 6, 7, -8, 9, 15};
 
-    void CauA()
+    void CauA() 
     {
-        cout<<"Output cua cau a la ";
-        for(int i = 0; i < n; i++)
+        cout << "Output of question a is ";
+        for (int i = 0; i < n; i++) 
         {
-            
-            if(a[i]<0 && a[i]!=0)
+            if (a[i] < 0 && a[i] != 0) 
             {
-                
-                cout<<a[i]<<" ";
+                cout << a[i] << " ";
             }
         }
-        cout<<" "<<endl;
+        cout << endl;
     }
 
-    void CauB()
+    void CauB() 
     {
-        cout<<"Output cua cau b la ";
-        for(int i = 0; i < n; i++)
+        cout << "Output of question b is ";
+        for (int i = 0; i < n; i++) 
         {
-            if(a[i]%2!=0)
+            if (a[i] % 2 != 0) 
             {
-                cout<<a[i]<<" ";
+                cout << a[i] << " ";
             }
         }
-        cout<<" "<<endl;
+        cout << endl;
     }
 
     void CauC()
     {
-        int s=0;
-        cout<<"Output cua cau c la ";
-        for(int i = 0; i < n; i++)
+        int s = 0;
+        cout << "Output of question c is ";
+        for (int i = 0; i < n; i++) 
         {
-            if(a[i]%3==0)
+            if (a[i] % 3 == 0) 
             {
-                s = s + a[i];
+                s += a[i];
             }
         }
-        cout<<s<<endl;
+        cout << s << endl;
     }
 
     void CauD() 
     {
         int arr[] = {1, 5, 6, 12, 5};
-        int k;
         int m = 5;
         int j = 0;
-        cout << "Nhap mot so nguyen K de tim vi tri cua K trong mang da co: ";
+        int k;
+        cout << "Enter an integer K to find its position in the existing array: ";
         cin >> k;
-        cout << "Output cua cau d la: ";
         bool found = false;
-        for (int i = 0; i < m; i++) {
+        cout << "Output of question d is: ";
+        for (int i = 0; i < m; i++) 
+        {
             j++;
-            if (arr[i] == k) {
+            if (arr[i] == k) 
+            {
                 cout << j << " ";
                 found = true;
             }
         }
-        if (!found) {
-            cout << "Khong tim thay " << k << " trong mang.";
+        if (!found) 
+        {
+            cout << "The number " << k << " is not found in the array.";
         }
         cout << endl;
     }
 };
 
-void CoiKetQua() 
+class Baitap2 
 {
-    Baitap1 obj;
+public:
+    int arr2[10] = {1, 2, 3, -4, -5, 6, 7, -8, 9, 15};
+
+    void Cau2Duong() 
+    {
+        cout << "Output of question 2 is: ";
+        for (int i = 0; i < 10; i++) 
+        {
+            if (arr2[i] > 0) 
+            {
+                cout << arr2[i] << " ";
+            }
+        }
+        cout << endl;
+    }
+
+    void Cau2Am() 
+    {
+        cout << "Output of question 2 is: ";
+        for (int i = 0; i < 10; i++) 
+        {
+            if (arr2[i] < 0) 
+            {
+                cout << arr2[i] << " ";
+            }
+        }
+        cout << endl;
+    }
+};
+
+void DisplayResults() 
+{
+    Baitap1 obj1;
+    Baitap2 obj2;
     int Bai;
-    string Cau = "";
-    cout << "Ban muon coi ket qua bai nao: ";
+    string Cau;
+    cout << "Enter the question number you want to see the result for: ";
     cin >> Bai;
-    cin.ignore(); // To clear the newline character from the input buffer
+    cin.ignore();
 
     switch (Bai) 
     {
         case 1:
-            cout << "Ban muon coi cau nao: ";
+            cout << "Enter the sub-question you want to see the result for (a, b, c, d): ";
             cin >> Cau;
             if (Cau == "a") 
             {
-                obj.CauA(); // Call the function CauA from Baitap1 object
+                obj1.CauA();
             } 
             else if (Cau == "b") 
             {
-                obj.CauB(); // Call the function CauB from Baitap1 object
+                obj1.CauB();
             } 
             else if (Cau == "c") 
             {
-                obj.CauC(); // Call the function CauC from Baitap1 object
+                obj1.CauC();
             } 
             else if (Cau == "d") 
             {
-                obj.CauD(); // Call the function CauD from Baitap1 object
+                obj1.CauD();
             } 
             else 
             {
-                cout << "Lua chon cau khong hop le.\n";
+                cout << "Invalid sub-question choice.\n";
+            }
+            break;
+        case 2:
+            cout << "Enter the sub-question you want to see the result for (Duong, Am): ";
+            cin >> Cau;
+            if (Cau == "a") 
+            {
+                obj2.Cau2Duong();
+            } 
+            else if (Cau == "b") 
+            {
+                obj2.Cau2Am();
+            } 
+            else 
+            {
+                cout << "Invalid sub-question choice.\n";
             }
             break;
         default:
-            cout << "Bai khong ton tai.\n";
+            cout << "Question number does not exist.\n";
             break;
     }
+    return 0;
 }
 
-int main()
+int main() 
 {
-    CoiKetQua();
+    DisplayResults();
     return 0;
 }
