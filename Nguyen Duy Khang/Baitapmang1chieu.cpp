@@ -111,7 +111,7 @@ public:
 class Baitap3
 {
 public:
-    int arr3[100];
+    int arr3[50];
     int n3;
     int i;
     void Cau3()
@@ -144,7 +144,7 @@ public:
 class Baitap4 
 {
 public:
-    int arr4[100];
+    int arr4[50];
     int n4, i;
 
     void enterArray() 
@@ -152,11 +152,11 @@ public:
         cout << "Input the length of array: ";
         cin >> n4;
         cout << "Input the array to see whether the array can be an arithmetic progression or geometric progression: " << endl;
-        for (i = 0; i < n4; i++) 
+        for(i = 0;i < n4;i++) 
         {
             cin >> arr4[i];
         }
-        for (i = 0; i < n4; i++) 
+        for(i = 0;i < n4;i++) 
         {
             cout << arr4[i]<<" ";
         }
@@ -222,12 +222,53 @@ public:
 
 };
 
+class Baitap5
+{
+public:
+    int arr5[50];
+    int n5,i,j;
+
+    void Cau5()
+    {
+        cout << "Input the length of array: ";
+        cin >> n5;
+        cout << "Input the array" << endl;
+        for (i = 0; i < n5; i++) 
+        {
+            cin >> arr5[i];
+        }
+        for (i = 0; i < n5; i++) 
+        {
+            cout << arr5[i]<<" ";
+        }
+        cout<<endl;
+        //Ex : 3 2 4 6 5 => Goal : 6 5 4 3 2
+        for(i=1;i<=n5;i++) 
+        {
+            int key = arr5[i]; // index 1 => 2
+            j = i - 1; // index 0 => 3
+            while (j >= 0 && arr5[j] < key) // 3 < 2
+            {
+                arr5[j + 1] = arr5[j]; // index 1=2 => index 0=3
+                j = j - 1; // index 3
+            }
+            arr5[j + 1] = key; 
+        }
+        for (int i = 0; i < n5; i++) 
+        {
+            cout << arr5[i] << " ";
+        }
+    }
+
+};
+
 void DisplayResults() 
 {
     Baitap1 obj1;
     Baitap2 obj2;
     Baitap3 obj3;
     Baitap4 obj4;
+    Baitap5 obj5;
     int Bai;
     string Cau;
     cout << "Enter the question number you want to see the result for: ";
@@ -279,6 +320,12 @@ void DisplayResults()
         case 3:
             obj3.Cau3();
             break;
+        case 4:
+            obj4.Cau4();
+            break;
+        case 5:
+            obj5.Cau5();
+            break;
         default:
             cout << "Question number does not exist.\n";
             break;
@@ -287,8 +334,6 @@ void DisplayResults()
 
 int main() 
 {
-    //DisplayResults();
-    Baitap4 obj;
-    obj.Cau4();
+    DisplayResults();
     return 0;
 }
