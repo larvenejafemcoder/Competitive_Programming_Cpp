@@ -12,7 +12,7 @@ public:
     void CauA() 
     {
         cout << "Output of question a is ";
-        for (int i = 0; i < n; i++) 
+        for(int i = 0;i < n;i++) 
         {
             if (a[i] < 0 && a[i] != 0) 
             {
@@ -25,7 +25,7 @@ public:
     void CauB() 
     {
         cout << "Output of question b is ";
-        for (int i = 0; i < n; i++) 
+        for(int i = 0;i < n;i++) 
         {
             if (a[i] % 2 != 0) 
             {
@@ -39,7 +39,7 @@ public:
     {
         int s = 0;
         cout << "Output of question c is ";
-        for (int i = 0; i < n; i++) 
+        for(int i = 0;i < n;i++) 
         {
             if (a[i] % 3 == 0) 
             {
@@ -59,16 +59,16 @@ public:
         cin >> k;
         bool found = false;
         cout << "Output of question d is: ";
-        for (int i = 0; i < m; i++) 
+        for(int i = 0;i < m;i++) 
         {
             j++;
-            if (arr[i] == k) 
+            if(arr[i] == k) 
             {
                 cout << j << " ";
                 found = true;
             }
         }
-        if (!found) 
+        if(!found) 
         {
             cout << "The number " << k << " is not found in the array.";
         }
@@ -84,9 +84,9 @@ public:
     void Cau2Duong() 
     {
         cout << "Output of question 2 is: ";
-        for (int i = 0; i < 10; i++) 
+        for(int i = 0; i < 10; i++) 
         {
-            if (arr2[i] > 0) 
+            if(arr2[i] > 0) 
             {
                 cout << arr2[i] << " ";
             }
@@ -97,7 +97,7 @@ public:
     void Cau2Am() 
     {
         cout << "Output of question 2 is: ";
-        for (int i = 0; i < 10; i++) 
+        for(int i = 0; i < 10; i++) 
         {
             if (arr2[i] < 0) 
             {
@@ -108,10 +108,126 @@ public:
     }
 };
 
+class Baitap3
+{
+public:
+    int arr3[100];
+    int n3;
+    int i;
+    void Cau3()
+    {
+        cout<<"Input the length of your array"<<endl;
+        cin>>n3;
+        cout<<"Input the array"<<endl;
+        for(i=0; i<n3; i++)
+        {
+            cin>>arr3[i];
+        }
+        cout << "Output of the array: ";
+        for(int i = 0;i < n3; i++)
+        {
+            cout << arr3[i] << " ";
+        }
+        cout << endl;
+        int max = arr3[0]; // Initialize max with the first element
+        for(i=1; i<n3; i++)
+        {
+            if(arr3[i] > max)
+            {
+                max = arr3[i]; // Update max if a larger element is found
+            }
+        }
+        cout << "Maximum element in the array: " << max << endl;
+    }
+};
+
+class Baitap4 
+{
+public:
+    int arr4[100];
+    int n4, i;
+
+    void enterArray() 
+    {
+        cout << "Input the length of array: ";
+        cin >> n4;
+        cout << "Input the array to see whether the array can be an arithmetic progression or geometric progression: " << endl;
+        for (i = 0; i < n4; i++) 
+        {
+            cin >> arr4[i];
+        }
+        for (i = 0; i < n4; i++) 
+        {
+            cout << arr4[i]<<" ";
+        }
+    };
+
+    void Cau4() 
+    {
+    enterArray();
+    bool isAProg = true; // Assume it's an arithmetic progression initially
+    bool isGProg = false; // Assume it's not a geometric progression initially
+
+    if(n4 >= 2)
+    {
+        int a_com_diff = arr4[1] - arr4[0]; // Calculate common difference
+        int g_com_diff = arr4[1] / arr4[0]; // Calculate common ratio
+
+        for(i = 1; i < n4 - 1; i++) 
+        {
+            if (arr4[i + 1] - arr4[i] != a_com_diff) 
+            {
+                isAProg = false; // If any difference doesn't match, it's not an AP
+            }
+            else
+            {
+                isAProg = true;
+            }
+        }
+
+        for(i = 1; i < n4 - 1; i++) 
+        {
+            if (arr4[i + 1] / arr4[i] != g_com_diff)
+            {
+                isGProg = false; // If any ratio doesn't match, it's not a GP
+            }
+            else
+            {
+                isGProg = true;
+            }
+        }
+    } 
+    else 
+    {
+        isAProg = false; // If there are less than 2 elements, it's not an AP
+    }
+
+    if(isAProg == true && isGProg == true) 
+    {
+        cout << "The array is both an arithmetic and geometric progression." << endl;
+    } 
+    else if(isAProg == true) 
+    {
+        cout << "The array is an arithmetic progression." << endl;
+    } 
+    else if(isGProg == true) 
+    {
+        cout << "The array is a geometric progression." << endl;
+    } 
+    else 
+    {
+        cout << "The array is neither an arithmetic progression nor a geometric progression." << endl;
+    }
+}
+
+};
+
 void DisplayResults() 
 {
     Baitap1 obj1;
     Baitap2 obj2;
+    Baitap3 obj3;
+    Baitap4 obj4;
     int Bai;
     string Cau;
     cout << "Enter the question number you want to see the result for: ";
@@ -160,15 +276,19 @@ void DisplayResults()
                 cout << "Invalid sub-question choice.\n";
             }
             break;
+        case 3:
+            obj3.Cau3();
+            break;
         default:
             cout << "Question number does not exist.\n";
             break;
     }
-    return 0;
-}
+};
 
 int main() 
 {
-    DisplayResults();
+    //DisplayResults();
+    Baitap4 obj;
+    obj.Cau4();
     return 0;
 }
