@@ -164,61 +164,61 @@ public:
 
     void Cau4() 
     {
-    enterArray();
-    bool isAProg = true; // Assume it's an arithmetic progression initially
-    bool isGProg = false; // Assume it's not a geometric progression initially
+        enterArray();
+        bool isAProg = true; // Assume it's an arithmetic progression initially
+        bool isGProg = false; // Assume it's not a geometric progression initially
 
-    if(n4 >= 2)
-    {
-        int a_com_diff = arr4[1] - arr4[0]; // Calculate common difference
-        int g_com_diff = arr4[1] / arr4[0]; // Calculate common ratio
-
-        for(i = 1; i < n4 - 1; i++) 
+        if(n4 >= 2)
         {
-            if (arr4[i + 1] - arr4[i] != a_com_diff) 
+            int a_com_diff = arr4[1] - arr4[0]; // Calculate common difference
+            int g_com_diff = arr4[1] / arr4[0]; // Calculate common ratio
+
+            for(i = 1; i < n4 - 1; i++) 
             {
-                isAProg = false; // If any difference doesn't match, it's not an AP
+                if (arr4[i + 1] - arr4[i] != a_com_diff) 
+                {
+                    isAProg = false; // If any difference doesn't match, it's not an AP
+                }
+                else
+                {
+                    isAProg = true;
+                }
             }
-            else
+
+            for(i = 1; i < n4 - 1; i++) 
             {
-                isAProg = true;
+                if (arr4[i + 1] / arr4[i] != g_com_diff)
+                {
+                    isGProg = false; // If any ratio doesn't match, it's not a GP
+                }
+                else
+                {
+                    isGProg = true;
+                }
             }
+        } 
+        else 
+        {
+            isAProg = false; // If there are less than 2 elements, it's not an AP
         }
 
-        for(i = 1; i < n4 - 1; i++) 
+        if(isAProg == true && isGProg == true) 
         {
-            if (arr4[i + 1] / arr4[i] != g_com_diff)
-            {
-                isGProg = false; // If any ratio doesn't match, it's not a GP
-            }
-            else
-            {
-                isGProg = true;
-            }
+            cout << "The array is both an arithmetic and geometric progression." << endl;
+        } 
+        else if(isAProg == true) 
+        {
+            cout << "The array is an arithmetic progression." << endl;
+        } 
+        else if(isGProg == true) 
+        {
+            cout << "The array is a geometric progression." << endl;
+        } 
+        else 
+        {
+            cout << "The array is neither an arithmetic progression nor a geometric progression." << endl;
         }
-    } 
-    else 
-    {
-        isAProg = false; // If there are less than 2 elements, it's not an AP
     }
-
-    if(isAProg == true && isGProg == true) 
-    {
-        cout << "The array is both an arithmetic and geometric progression." << endl;
-    } 
-    else if(isAProg == true) 
-    {
-        cout << "The array is an arithmetic progression." << endl;
-    } 
-    else if(isGProg == true) 
-    {
-        cout << "The array is a geometric progression." << endl;
-    } 
-    else 
-    {
-        cout << "The array is neither an arithmetic progression nor a geometric progression." << endl;
-    }
-}
 
 };
 
