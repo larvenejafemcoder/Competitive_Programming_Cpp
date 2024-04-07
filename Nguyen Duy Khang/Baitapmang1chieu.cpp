@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <unordered_set>
+#include <unordered_map>
 #include <algorithm>
 
 using namespace std;
@@ -306,6 +307,65 @@ public:
     };
 };
 
+class Baitap7
+{
+public:
+    // Hàm kiểm tra xem số có thỏa mãn điều kiện không xem có đủ 3 chữ số không
+    bool Check(int n)
+    {
+        int preDigit = 10; // Đảm bảo giá trị lớn nhất mà một chữ số có thể có là 9.
+        int count = 0;
+        while (n > 0) //Duyệt qua các chữ số của n
+        {
+            int k = n % 10; // Lấy chữ số cuối cùng của n
+            n /= 10; // Loại bỏ chữ số cuối cùng
+            count++;
+            if(k >= preDigit) // Nếu chữ số hiện tại không tăng so với chữ số trước đó
+            {
+                return 0; // Cho false
+            }
+            preDigit = k; // Cập nhật chữ số trước đó cho lần lặp tiếp theo
+            if(count > 3) // Nếu đã kiểm tra hơn 3 chữ số
+            {
+                return 0; // Cho false
+            }
+        }
+         // Nếu đã kiểm tra xong và không có lỗi nào xảy ra, trả về true
+        return count == 3; // Kiểm tra xem có đủ 3 chữ số không
+    }
+
+    // Hàm đếm số lượng số thỏa mãn điều kiện
+    int cntIncTriplets(const vector<int>& arr7) 
+    {
+        int count = 0; // Cho đếm bằng 0
+        for(int num : arr7) 
+        {
+            if(Check(num))
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    void Cau7() 
+    {
+        int n7;
+        cout << "Input the length of array: ";
+        cin >> n7;
+
+        vector<int> arr7(n7);
+        cout << "Input the array of positive integers: ";
+        for(int i = 0; i < n7; ++i) 
+        {
+            cin >> arr7[i];
+        }
+
+        int result = cntIncTriplets(arr7);
+        cout << "The amount of numbers that meets the 2 given conditions: " << result << endl;
+    }
+};
+
 class Baitap8 
 {
 public:
@@ -433,6 +493,7 @@ void DisplayResults()
     Baitap4 obj4;
     Baitap5 obj5;
     Baitap6 obj6;
+    Baitap7 obj7;
     Baitap8 obj8;
     Baitap9 obj9;
     int Bai;
@@ -494,6 +555,9 @@ void DisplayResults()
             break;
         case 6:
             obj6.Cau6();
+            break;
+        case 7:
+            obj7.Cau7();
             break;
         case 8:
             obj8.Cau8();
