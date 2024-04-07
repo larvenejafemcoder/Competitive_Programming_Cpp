@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <unordered_set>
+#include <algorithm>
 
 using namespace std;
 
@@ -262,6 +264,167 @@ public:
 
 };
 
+class Baitap6
+{
+public:
+    int arr6[50];
+    int n6,i;
+    bool isSymmetric = false;
+    void Cau6()
+    {
+        cout << "Input the length of array: ";
+        cin >> n6;
+        cout << "Input the array" << endl;
+        for (i = 0; i < n6; i++) 
+        {
+            cin >> arr6[i];
+        }
+        for (i = 0; i < n6; i++) 
+        {
+            cout << arr6[i]<<" ";
+        }
+        cout<<endl;
+        for(int i = 0; i < n6/2; i++)
+        {
+            if(arr6[i] != arr6[n6 - i - 1])
+            {
+                isSymmetric = false;
+            }
+            else
+            {
+                isSymmetric = true;
+            }
+        }
+        if(isSymmetric==true)
+        {
+            cout<<"The array is symmetric"<<endl;
+        }
+        else
+        {
+            cout<<"The array is not symmetric"<<endl;
+        }
+    };
+};
+
+class Baitap8 
+{
+public:
+    vector<int> createUniqueSet(const vector<int>& arr8) 
+    {
+        vector<int> uniqueSet;
+        
+        // Iterate through each element in the input vector
+        for(int num : arr8) 
+        {
+            // If the element doesn't exist in the uniqueSet, add it
+            if(find(uniqueSet.begin(), uniqueSet.end(), num) == uniqueSet.end()) 
+            {
+                uniqueSet.push_back(num);
+            }
+        }
+        
+        return uniqueSet;
+    };
+
+    void Cau8() 
+    {
+        int n8;
+        int i,j,jmin;
+        cout << "Input the length of array: ";
+        cin >> n8;
+
+        // Input vector
+        vector<int> arr8(n8);
+
+        cout << "Input the array: ";
+        for(i = 0; i < n8; ++i) 
+        {
+            cin >> arr8[i];
+        }
+
+        for (i = 0; i < n8 - 1; i++)
+        {
+            jmin = i;
+            for (j = i + 1; j < n8; j++)
+            {
+                if (arr8[j] < arr8[jmin])
+                {
+                    jmin = j;
+                }
+            }
+            if (jmin != i)
+            {
+                swap(arr8[jmin], arr8[i]);
+            }
+        }
+
+        for(i = 0; i < n8; ++i) 
+        {
+            cout << arr8[i] << " ";
+        }
+        cout << endl;
+        
+        // Call the function to create a set of unique elements
+        vector<int> uniqueSet = createUniqueSet(arr8);
+        
+        // Print the count of unique elements in the set
+        cout << "Count of existed number in array: " << uniqueSet.size() << endl;
+    }
+};
+
+class Baitap9
+{
+public:
+    int arr9[50];
+    int n9,i;
+    void Cau9() 
+    {
+        cout << "Input the length of array: ";
+        cin >> n9;
+
+        cout << "Input the array: " << endl;
+        for(i = 0; i < n9; ++i) 
+        {
+            cin >> arr9[i];
+        }
+        for(i = 0; i < n9; ++i)
+        {
+            cout << arr9[i] << " ";
+        }
+        cout << endl;
+        unordered_map<int, int> counts;
+        for (i = 0; i < n9; i++) 
+        {
+            counts[arr9[i]]++;
+        }
+        
+        int maxCount = max_element(counts.begin(), counts.end(), 
+            [](const auto& a, const auto& b){
+                return a.second < b.second;
+            })->second;
+        
+        vector<pair<int, int>> largestCounts;
+        for(const auto& pair : counts) 
+        {
+            if (pair.second == maxCount) 
+            {
+                largestCounts.push_back(pair);
+            }
+        }
+
+        if (!largestCounts.empty()) 
+        {
+            cout << "SO HANG XUAT HIEN NHIEU NHAT LA SO: " << largestCounts[0].first << ", SO LAN XUAT HIEN LA: " << largestCounts[0].second;
+            if (largestCounts[0].second == 1) 
+            {
+                cout << " LAN" << endl;
+            } else {
+                cout << " LAN" << endl;
+            }
+        }
+    }
+};
+
 void DisplayResults() 
 {
     Baitap1 obj1;
@@ -269,6 +432,9 @@ void DisplayResults()
     Baitap3 obj3;
     Baitap4 obj4;
     Baitap5 obj5;
+    Baitap6 obj6;
+    Baitap8 obj8;
+    Baitap9 obj9;
     int Bai;
     string Cau;
     cout << "Enter the question number you want to see the result for: ";
@@ -325,6 +491,15 @@ void DisplayResults()
             break;
         case 5:
             obj5.Cau5();
+            break;
+        case 6:
+            obj6.Cau6();
+            break;
+        case 8:
+            obj8.Cau8();
+            break;
+        case 9:
+            obj9.Cau9();
             break;
         default:
             cout << "Question number does not exist.\n";
