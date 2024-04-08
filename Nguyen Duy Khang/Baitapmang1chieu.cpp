@@ -3,6 +3,7 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <algorithm>
+#include <climits>
 
 using namespace std;
 
@@ -485,6 +486,49 @@ public:
     }
 };
 
+class Baitap10
+{
+public:
+    int arr10[50];
+    int n10,i;
+    void Cau10()
+    {
+        cout << "Input the length of array: ";
+        cin >> n10;
+        cout << "Input the array" << endl;
+        for(i = 0; i < n10; i++) 
+        {
+            cin >> arr10[i];
+        }
+        for(i = 0; i < n10; i++) 
+        {
+            cout << arr10[i] <<" ";
+        }
+        cout << endl;
+        int largest_negative = INT_MIN; // Initialize with the smallest possible integer
+
+        for(int i = 0; i < n10; i++) 
+        {
+            if(arr10[i] < 0) 
+            {
+                if(arr10[i] > largest_negative) 
+                {
+                    largest_negative = arr10[i];
+                }
+            }
+        }
+
+        if(largest_negative != INT_MIN) 
+        {
+            cout << "Largest negative number: " << largest_negative << endl;
+        } 
+        else 
+        {
+            cout << "No negative numbers found in the array." << endl;
+        }
+    }
+};
+
 void DisplayResults() 
 {
     Baitap1 obj1;
@@ -496,6 +540,7 @@ void DisplayResults()
     Baitap7 obj7;
     Baitap8 obj8;
     Baitap9 obj9;
+    Baitap10 obj10;
     int Bai;
     string Cau;
     cout << "Enter the question number you want to see the result for: ";
@@ -564,6 +609,9 @@ void DisplayResults()
             break;
         case 9:
             obj9.Cau9();
+            break;
+        case 10:
+            obj10.Cau10();
             break;
         default:
             cout << "Question number does not exist.\n";
