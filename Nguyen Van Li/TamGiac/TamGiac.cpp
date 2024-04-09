@@ -3,6 +3,7 @@
 
 using namespace std;
 int a[100000],n,x,y;
+
 void Input()
 {
 
@@ -13,7 +14,10 @@ void StamGiac(int j, int i, int k)
 
 }
 
-void Abso
+void Abso()
+{
+
+}
 
 void Process()
 {
@@ -33,6 +37,11 @@ void Process()
 			}
 		}
 	}
+}
+
+void Output()
+{
+	
 }
 
 int main()
