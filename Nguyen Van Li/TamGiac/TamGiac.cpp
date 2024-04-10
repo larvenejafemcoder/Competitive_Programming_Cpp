@@ -6,7 +6,9 @@ int a[100000],n,x,y;
 
 void Input()
 {
-
+	ifstream ip("TamGiac.inp");
+	ip>>x>>y;
+	ip.close();
 }
 
 void StamGiac(int j, int i, int k)
