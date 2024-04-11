@@ -529,6 +529,86 @@ public:
     }
 };
 
+class Baitap11
+{
+public:
+    int i,n11;
+    int arr11[50];
+    int KQ=0, cnt=0;
+    void Cau11()
+    {
+        cout << "Input the length of array: ";
+        cin >> n11;
+        cout << "Input the array" << endl;
+        for(i = 0; i < n11; i++) 
+        {
+            cin >> arr11[i];
+        }
+        for(i = 0; i < n11; i++) 
+        {
+            cout << arr11[i] <<" ";
+        }
+        cout << endl;
+        for(i = 1; i < n11; i++)
+        {
+            if(arr11[i] > 0)
+            {
+                cnt++;
+                if(cnt > KQ) 
+                {
+                    KQ = cnt;
+                }
+
+            }
+            else
+            {
+                cnt = 0;  
+            }
+        }
+        cout << KQ << endl;
+    }
+};
+
+class Baitap12
+{
+public:
+    int n12,i;
+    int cnt=1, KQ=0;
+    int arr12[50];
+    void Cau12()
+    {
+        cout << "Input the length of array: ";
+        cin >> n12;
+        cout << "Input the array" << endl;
+        for(i = 1; i <= n12; i++) 
+        {
+            cin >> arr12[i];
+        }
+        for(i = 1; i <= n12; i++) 
+        {
+            cout << arr12[i] <<" ";
+        }
+        cout << endl;
+        for(i = 1; i <= n12; i++)
+        {
+            if(arr12[i] < arr12[i+1])
+            {
+                cnt++;
+                if(cnt > KQ) 
+                {
+                    KQ = cnt;
+                }
+
+            }
+            else
+            {
+                cnt = 1;  
+            }
+        }
+        cout << KQ << endl;
+    }
+};
+
 void DisplayResults() 
 {
     Baitap1 obj1;
@@ -541,6 +621,8 @@ void DisplayResults()
     Baitap8 obj8;
     Baitap9 obj9;
     Baitap10 obj10;
+    Baitap11 obj11;
+    Baitap12 obj12;
     int Bai;
     string Cau;
     cout << "Enter the question number you want to see the result for: ";
@@ -612,6 +694,12 @@ void DisplayResults()
             break;
         case 10:
             obj10.Cau10();
+            break;
+        case 11:
+            obj11.Cau11();
+            break;
+        case 12:
+            obj12.Cau12();
             break;
         default:
             cout << "Question number does not exist.\n";
