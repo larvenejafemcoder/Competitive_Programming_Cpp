@@ -609,6 +609,45 @@ public:
     }
 };
 
+class Baitap13
+{
+public:
+    int n13,i;
+    int cnt=1, KQ=0;
+    int arr13[50];
+    void Cau13()
+    {
+        cout << "Input the length of array: ";
+        cin >> n13;
+        cout << "Input the array" << endl;
+        for(i = 1; i <= n13; i++) 
+        {
+            cin >> arr13[i];
+        }
+        for(i = 1; i <= n13; i++) 
+        {
+            cout << arr13[i] << " ";
+        }
+        cout << endl;
+        for(i = 1; i <= n13; i++)
+        {
+            if(arr13[i]*arr13[i+1] < 0)
+            {
+                cnt++;
+                if(cnt > KQ) 
+                {
+                    KQ = cnt;
+                }
+            }
+            else
+            {
+                cnt = 1;  
+            }
+        }
+        cout << KQ << endl;
+    }
+};
+
 void DisplayResults() 
 {
     Baitap1 obj1;
@@ -623,6 +662,7 @@ void DisplayResults()
     Baitap10 obj10;
     Baitap11 obj11;
     Baitap12 obj12;
+    Baitap13 obj13;
     int Bai;
     string Cau;
     cout << "Enter the question number you want to see the result for: ";
@@ -700,6 +740,9 @@ void DisplayResults()
             break;
         case 12:
             obj12.Cau12();
+            break;
+        case 13:
+            obj13.Cau13();
             break;
         default:
             cout << "Question number does not exist.\n";

@@ -33,7 +33,7 @@ void Process()
 				{
 					if(StamGiac(i,j,k) == StamGiac(1,j,k)+StamGiac(1,j,i)+StamGiac(1,i,k))
 					{
-
+						
 					}
 				}
 			}
