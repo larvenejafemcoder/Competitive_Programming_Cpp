@@ -4,7 +4,7 @@
 using namespace std;
 
 int const AA = 1000000;
-int amin[2000002], amax[2000002];
+int amin[2*AA+1], amax[2*AA+1]; // 2*10**6 + 1 với 2*10**6 + 1 là số phần tử có thể có trong array
 int dmax;
 int x,n,k;
 int cnt = 0;
