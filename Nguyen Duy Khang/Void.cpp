@@ -20,9 +20,9 @@ int main()
     string Function = "";
     do {
         cout << "What program would you like to enter? :" << endl;
-        cout << "1. EvenOrOdd" << endl;
-        cout << "2. SumOfNum" << endl;
-        cout << "3. DivisorOfNum" << endl;
+        cout << "1. Even Or Odd" << endl;
+        cout << "2. Sum Of Numbers" << endl;
+        cout << "3. Divisor Of Num" << endl;
 
         while (Function == "")
         {
