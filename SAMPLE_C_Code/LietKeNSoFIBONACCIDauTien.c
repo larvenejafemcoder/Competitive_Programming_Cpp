@@ -1,30 +1,31 @@
-#include<stdio.h>
-int fibonacci(int n) 
-{
-    int f0 = 0;
-    int f1 = 1;
-    int temp=1;
-    if (n == 0 || n == 1) 
-	{
-        return n;
-    } 
-	else 
-	{
-        for (int i = 2; i < n; i++) 
-		{
-            f0=f1;
-            f1=temp;
-            temp=f0+f1;
-        }
+#include <stdio.h>
+
+// Function to return the nth Fibonacci number
+int fibonacci(int n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+
+    int prev = 0, curr = 1, next;
+
+    for (int i = 2; i <= n; i++) {
+        next = prev + curr;
+        prev = curr;
+        curr = next;
     }
-    return temp;
+
+    return curr;
 }
-int main() 
-{
-	int n;
-	scanf("%d",&n);
-    for (int i = 0; i < n; i++) 
-	{
-        printf("%d ",fibonacci(i));
+
+int main() {
+    int n;
+    printf("Enter how many Fibonacci numbers to print: ");
+    scanf("%d", &n);
+
+    printf("First %d Fibonacci numbers:\n", n);
+    for (int i = 0; i < n; i++) {
+        printf("%d ", fibonacci(i));
     }
+    printf("\n");
+
+    return 0;
 }
