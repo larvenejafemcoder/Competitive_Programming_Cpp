@@ -32,6 +32,10 @@ using namespace std;
  * gcd(int a, int b) - Returns Greatest Common Divisor of two integers using Euclidean algorithm
  * 
  * displayMenu() - Shows the main menu with all available mathematical operations
+ * 
+ * OddNumbers() - Displays all odd numbers from 1 to n in sequence
+ * 
+ * PolyEquation() - Solves quadratic equations of the form ax²+bx+c=0 using discriminant
  */
 
 // Function declarations
@@ -49,13 +53,15 @@ void calculatePower();
 void calculateAverage();
 int gcd(int a, int b);
 void displayMenu();
+void OddNumbers();
+void PolyQuadraticEquation();
 
 int main() {
     int choice;
     
     do {
         displayMenu();
-        cout << "Enter your choice (1-13, 0 to exit): ";
+        cout << "Enter your choice (1-15, 0 to exit): ";
         cin >> choice;
         cout << "\n";
         
@@ -76,6 +82,8 @@ int main() {
                 cout << "GCD of 25 and 10 is: " << gcd(25, 10) << endl;
                 break;
             }
+            case 14: OddNumbers(); break;
+            case 15: PolyQuadraticEquation(); break;
             case 0: 
                 cout << "Goodbye!" << endl;
                 break;
@@ -103,6 +111,8 @@ void displayMenu() { // Displays the main menu with all available mathematical o
     cout << "11. Calculate power (a^n)" << endl;
     cout << "12. Calculate average of two numbers" << endl;
     cout << "13. Find GCD of 25 and 10" << endl;
+    cout << "14. Display odd numbers from 1 to n" << endl;
+    cout << "15. Solve quadratic equation (ax²+bx+c=0)" << endl;
     cout << "0.  Exit" << endl;
 }
 
@@ -307,4 +317,66 @@ int gcd(int a, int b) {
         return a;
     }
     return gcd(b, a % b);
+}
+
+void OddNumbers() { // Displays all odd numbers from 1 to n in sequence
+    int n;
+    cout << "Enter number N to display all odd numbers from 1 to N: ";
+    cin >> n;
+    
+    if (n <= 0) {
+        cout << "Please enter a positive integer." << endl;
+        return;
+    }
+    
+    cout << "Odd numbers from 1 to " << n << ": ";
+    int count = 0;
+    for(int i = 1; i <= n; i += 2) {
+        cout << i << " ";
+        count++;
+    }
+    cout << "\nTotal count of odd numbers: " << count << endl;
+}
+
+void PolyQuadraticEquation() { // Solves quadratic equations of the form ax²+bx+c=0 using discriminant analysis
+    double a, b, c, delta;
+    double x, x1, x2;
+    
+    cout << "Solving quadratic equation: ax² + bx + c = 0" << endl;
+    cout << "Enter coefficient a: ";
+    cin >> a;
+    
+    if (a == 0) {
+        cout << "This is not a quadratic equation (a cannot be 0)!" << endl;
+        return;
+    }
+    
+    cout << "Enter coefficient b: ";
+    cin >> b;
+    cout << "Enter coefficient c: ";
+    cin >> c;
+    
+    // Calculate discriminant
+    delta = b * b - 4 * a * c;
+    cout << "Discriminant (Δ) = " << delta << endl;
+    
+    if (delta > 0) {
+        x1 = (-b + sqrt(delta)) / (2 * a);
+        x2 = (-b - sqrt(delta)) / (2 * a);
+        cout << "Equation has 2 distinct real roots:" << endl;
+        cout << "x1 = " << x1 << endl;
+        cout << "x2 = " << x2 << endl;
+    }
+    else if (delta == 0) {
+        x = -b / (2 * a);
+        cout << "Equation has one repeated root:" << endl;
+        cout << "x = " << x << endl;
+    }
+    else {
+        double realPart = -b / (2 * a);
+        double imagPart = sqrt(-delta) / (2 * a);
+        cout << "Equation has 2 complex roots:" << endl;
+        cout << "x1 = " << realPart << " + " << imagPart << "i" << endl;
+        cout << "x2 = " << realPart << " - " << imagPart << "i" << endl;
+    }
 }

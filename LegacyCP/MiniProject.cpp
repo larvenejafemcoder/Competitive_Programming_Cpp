@@ -7,6 +7,8 @@ using namespace std;
 void gradeCheckerProgram();
 void multiplesOfFiveProgram();
 void whileLoopSimulation();
+void forLoopSimulation();
+void AVERAGE();
 float calculateAverage(const vector<float>& grades);
 float inputGrade(int subjectNumber);
 
@@ -18,16 +20,20 @@ int main() {
     cout << "1. Student Grade Checker\n";
     cout << "2. Count multiples of 5 up to n\n";
     cout << "3. While Loop Simulation\n";
+    cout << "4. For Loop Simulation\n";
     cout << "Enter your choice: ";
     cin >> choice;
 
     if (choice == 1) {
-        gradeCheckerProgram();
+        AVERAGE();
     } else if (choice == 2) {
         multiplesOfFiveProgram();
     } else if (choice == 3) {
         whileLoopSimulation();
-    } else {
+    } else if (choice == 4){
+        forLoopSimulation();
+    }
+    else {
         cout << "Invalid choice!" << endl;
     }
 
@@ -36,41 +42,64 @@ int main() {
 
 // ====== PROGRAMS ======
 
-void gradeCheckerProgram() {
-    cout << "\n=== STUDENT GRADE CHECKER ===\n";
-
-    int numSubjects;
-    cout << "Enter how many subjects you want to input: ";
-    cin >> numSubjects;
-
-    // Validate subject count
-    while (cin.fail() || numSubjects <= 0) {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Invalid number, try again: ";
-        cin >> numSubjects;
+void AVERAGE() {
+        // Input for Math grade
+    int a,b,c;
+    while (true) {
+        cout << "PLEASE ENTER YOUR 1ST SUBJECT GRADE: ";
+        cin >> a;
+        if (cin.fail()) {
+            cin.clear();  // Clear input buffer
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore incorrect input
+            cout << "OOF! Invalid, try again!" << endl;
+        } else {
+            break;
+        }
     }
 
-    vector<float> grades;
-    for (int i = 1; i <= numSubjects; i++) {
-        grades.push_back(inputGrade(i));
+    // Input for second subject
+    while (true) {
+        cout << "PLEASE ENTER YOUR 2ND SUBJECT GRADE: ";
+        cin >> b;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid, try again!" << endl;
+        } else {
+            break;
+        }
     }
 
-    float average = calculateAverage(grades);
+    // Input for third subject
+    while (true) {
+        cout << "ENTER YOUR 3RD SUBJECT GRADE: ";
+        cin >> c;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input, try again!" << endl;
+        } else {
+            break;
+        }
+    }
+    cout << "CONSOLE PROGRAM TO DETERMINE HOW GOOD OF A STUDENT YOU ARE IN ASIA" << endl;
 
-    cout << "Your average score is: " << average << endl;
+    // Calculate average
+    int tb = (a + b + c) / 3;
 
-    if (average >= 9)
-        cout << "Excellent! You're a top student!" << endl;
-    else if (average >= 8)
-        cout << "Good job! You're above average." << endl; 
-    else if (average >= 6.5)
-        cout << "You're average. Keep working harder!" << endl; 
-    else if (average >= 5)
-        cout << "You're below average. Study more!" << endl; 
+    // Determine the student's performance
+    if(tb >= 9)
+        cout << "NICE!" << endl;
+    else if (tb >= 8)
+        cout << "YOU'RE AVERAGE" << endl; 
+    else if (tb >= 6.5)
+        cout << "YOU'RE BELLOW AVERAGE" << endl; 
+    else if (tb >= 5)
+        cout << "DON'T GO HOME TILL YOU'RE AVERAGE" << endl; 
     else
-        cout << "You failed. Try again next time!" << endl; 
+        cout << "KYS!" << endl; 
 }
+
 
 void multiplesOfFiveProgram() {
     cout << "\n=== MULTIPLES OF 5 COUNTER ===\n";
@@ -104,6 +133,18 @@ void whileLoopSimulation() {
         number = number + 1;
     }
 }
+
+void forLoopSimulation(){
+    //for loops
+
+    int number = 10;
+
+    for(int i=1;i<=number;i++){
+        cout << i << endl;
+    }
+    cout<<"Counted to ten!";
+}
+
 
 // ====== HELPERS ======
 
