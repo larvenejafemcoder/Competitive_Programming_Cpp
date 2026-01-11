@@ -9,64 +9,85 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-void Bai1(void)
+typedef struct {
+    int count;
+    int values[100];
+} Entity;
+
+void Element(Entity *e)
 {
-    int i;
-    printf("Enter i in N, display all the odd values of N: ");
-    scanf("%d", &i);
+    printf("Enter number of elements: ");
+    scanf("%d", &e->count);
 
-    if (i <= 0) return;
+    if (e->count <= 0) return;
 
-    int n[i];
-
-    for (int j = 0; j < i; j++) {
-        scanf("%d", &n[j]);
+    for (int i = 0; i < e->count; i++) {
+        scanf("%d", &e->values[i]);
     }
-
-    for (int a = 0; a < i; a++) {
-        if (n[a] % 2 != 0) {
-            printf("%d\n", n[a]);
+}
+void Bai1(const Entity *e)   // odd
+{
+    for (int a = 0; a < e->count; a++) {
+        if (e->values[a] % 2 != 0) {
+            printf("%d\n", e->values[a]);
         }
     }
 }
 
-void Bai2(void)
+void Bai2(const Entity *e)   // even
 {
-    int i;
-    printf("Enter i in N, display all the negative values of N: ");
-    scanf("%d", &i);
-
-    if (i <= 0) return;
-
-    int n[i];
-
-    for (int j = 0; j < i; j++) {
-        scanf("%d", &n[j]);
+    for (int a = 0; a < e->count; a++) {
+        if (e->values[a] % 2 == 0) {
+            printf("%d\n", e->values[a]);
+        }
     }
+}
 
-    for (int a = 0; a < i; a++) {
-        if (n[a] < 0 ){
-            printf("%d\n", n[a]);
+void Bai3(const Entity *e)   // positive
+{
+    for (int a = 0; a < e->count; a++) {
+        if (e->values[a] > 0) {
+            printf("%d\n", e->values[a]);
+        }
+    }
+}
+
+void Bai4(const Entity *e)   // negative
+{
+    for (int a = 0; a < e->count; a++) {
+        if (e->values[a] < 0) {
+            printf("%d\n", e->values[a]);
         }
     }
 }
 
 void Programme()
 {
-    int a;
+    Entity e;
+    int choice;
+
     printf("Choose a programme to run: ");
-    scanf("%d",&a);
-    switch (a) {
+    scanf("%d", &choice);
+
+    switch (choice) {
     case 1:
-        Bai1();
+        Element(&e);
+        Bai1(&e);
         break;
-
     case 2:
-        Bai2();
+        Element(&e);
+        Bai2(&e);
         break;
-
+    case 3:
+        Element(&e);
+        Bai3(&e);
+        break;
+    case 4:
+        Element(&e);
+        Bai4(&e);
+        break;
     default:
-        printf("Invalid Choice");
+        printf("Invalid Choice\n");
         break;
     }
 }
