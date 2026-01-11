@@ -12,7 +12,7 @@
 void Bai1(void)
 {
     int i;
-    printf("Enter i in N, display all the odd value of N: ");
+    printf("Enter i in N, display all the odd values of N: ");
     scanf("%d", &i);
 
     if (i <= 0) return;
@@ -30,8 +30,49 @@ void Bai1(void)
     }
 }
 
+void Bai2(void)
+{
+    int i;
+    printf("Enter i in N, display all the negative values of N: ");
+    scanf("%d", &i);
+
+    if (i <= 0) return;
+
+    int n[i];
+
+    for (int j = 0; j < i; j++) {
+        scanf("%d", &n[j]);
+    }
+
+    for (int a = 0; a < i; a++) {
+        if (n[a] < 0 ){
+            printf("%d\n", n[a]);
+        }
+    }
+}
+
+void Programme()
+{
+    int a;
+    printf("Choose a programme to run: ");
+    scanf("%d",&a);
+    switch (a) {
+    case 1:
+        Bai1();
+        break;
+
+    case 2:
+        Bai2();
+        break;
+
+    default:
+        printf("Invalid Choice");
+        break;
+    }
+}
+
 int main()
 {
-    Bai1();
+    Programme();
     return 0;
 }
