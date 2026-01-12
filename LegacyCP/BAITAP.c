@@ -25,7 +25,7 @@ void Element(Entity *e)
         scanf("%d", &e->values[i]);
     }
 }
-void Bai1(const Entity *e)   // odd
+void Bai1(const Entity *e)
 {
     for (int a = 0; a < e->count; a++) {
         if (e->values[a] % 2 != 0) {
@@ -34,7 +34,7 @@ void Bai1(const Entity *e)   // odd
     }
 }
 
-void Bai2(const Entity *e)   // even
+void Bai2(const Entity *e)
 {
     for (int a = 0; a < e->count; a++) {
         if (e->values[a] % 2 == 0) {
@@ -43,7 +43,7 @@ void Bai2(const Entity *e)   // even
     }
 }
 
-void Bai3(const Entity *e)   // positive
+void Bai3(const Entity *e)
 {
     for (int a = 0; a < e->count; a++) {
         if (e->values[a] > 0) {
@@ -52,7 +52,7 @@ void Bai3(const Entity *e)   // positive
     }
 }
 
-void Bai4(const Entity *e)   // negative
+void Bai4(const Entity *e)
 {
     for (int a = 0; a < e->count; a++) {
         if (e->values[a] < 0) {
@@ -66,7 +66,12 @@ void Programme()
     Entity e;
     int choice;
 
-    printf("Choose a programme to run: ");
+    printf("Choose a programme to run:\n");
+    printf("1.Odd numbers \n");
+    printf("2.Even numbers \n");
+    printf("3.Positive numbers \n");
+    printf("4.Negative numbers \n");
+
     scanf("%d", &choice);
 
     switch (choice) {
